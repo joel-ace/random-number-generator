@@ -1,0 +1,33 @@
+{
+  "name": "random-number-generator",
+  "version": "1.0.0",
+  "description": "a simple application to generate random numbers built using reactjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --progress --open --mode development --watch",
+    "prod": "webpack --mode production",
+    "start": "npm run prod && node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joel Akwevagbe",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "eslint": "^5.11.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.12.2",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.0",
+    "webpack-dev-server": "^3.1.14"
+  }
+}
