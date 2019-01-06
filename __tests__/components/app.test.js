@@ -1,8 +1,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import App from '../../src/App.jsx';
+import App from '../../src/components/App.jsx';
 
-describe('App', () => {
+describe('App component', () => {
   it('should mount', () => {
     mount(<App />);
   });
