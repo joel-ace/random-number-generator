@@ -1,8 +1,7 @@
 language: node_js
 node_js:
-	- "8"
-	- node
+  - "8"
+  - node
 install:
   - npm install
-script:
-	- jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
