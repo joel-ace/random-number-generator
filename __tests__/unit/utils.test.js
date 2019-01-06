@@ -1,7 +1,16 @@
-import { generateNumbers } from '../../src/utils';
+import { generateNumbers, paginate } from '../../src/utils';
 
 const QUANTITY = 10;
 const numbers = generateNumbers(10);
+
+const dataArray = [12, 23, 4, 5, 7];
+const paginateData = paginate(2, 2, dataArray);
+const paginateDataWithEmptyArray = paginate(2, 2, '');
+const paginateFunctionOutput = {
+  data: [4, 5],
+  totalCount: 5,
+  pageCount: 3,
+};
 
 
 describe('Utils', () => {
@@ -25,6 +34,20 @@ describe('Utils', () => {
       expect(numbers[7].charAt(0)).toBe('0');
       expect(numbers[4].charAt(0)).toBe('0');
       expect(numbers[9].charAt(0)).toBe('0');
+    });
+  });
+
+  describe('paginate function', () => {
+    it('should return an object containing data, totalCount, pageCount,', () => {
+      expect(paginateData).toHaveProperty('data');
+      expect(paginateData).toHaveProperty('totalCount');
+      expect(paginateData).toHaveProperty('pageCount');
+    });
+    it('should paginate the data based on page and limit', () => {
+      expect(paginateData).toMatchObject(paginateFunctionOutput);
+    });
+    it('should return false when no data array is passed', () => {
+      expect(paginateDataWithEmptyArray).toBe(false);
     });
   });
 });
