@@ -14,12 +14,19 @@ const defaultPaginationData = {
 	pageCount: 0,
 };
 
+const metaDataSpan = {
+	margin: '0 20px 0 0',
+	fontSize: '1.2em',
+};
+
 class Content extends Component {
 	state = {
 		phoneNumbers: [],
 		quantity: 1,
 		error: '',
 		paginationData: defaultPaginationData,
+		minNumber: '',
+		maxNumber: '',
 	};
 
 	handleGeneratePhoneNumbers = (quantity) => {
@@ -29,6 +36,8 @@ class Content extends Component {
 				phoneNumbers: generatedPhoneNumbers,
 				error: '',
 				paginationData: paginate(PAGINATION_LIMIT, 1, generatedPhoneNumbers),
+				minNumber: Math.min(...generatedPhoneNumbers),
+				maxNumber: Math.max(...generatedPhoneNumbers)
 			});
 		};
 
@@ -90,7 +99,13 @@ class Content extends Component {
 }
 
 	render () {
-		const { quantity, paginationData: { data: phoneNumbers, pageCount }, phoneNumbers: statePhoneNumbers } = this.state;
+		const {
+			quantity,
+			paginationData: { data: phoneNumbers, pageCount, totalCount },
+			phoneNumbers: statePhoneNumbers,
+			minNumber,
+			maxNumber
+		} = this.state;
 
 		return (
 			<div className="container">
@@ -128,6 +143,17 @@ class Content extends Component {
 										</div>
 									</div>
 									<div className="panel-body">
+										<div style={{ padding: 20, textAlign: 'center' }}>
+											<span style={metaDataSpan}>
+												Min: <span className="label label-md label-primary">{`0${minNumber}`}</span>
+											</span>
+											<span style={metaDataSpan}>
+												Max: <span className="label label-primary">{`0${maxNumber}`}</span>
+											</span>
+											<span style={metaDataSpan}>
+												Total <span className="label label-primary">{totalCount}</span>
+											</span>
+										</div>
 										{ this.renderGeneratedNumbers(phoneNumbers) }
 										<ReactPaginate previousLabel={"previous"}
 											nextLabel={"next"}

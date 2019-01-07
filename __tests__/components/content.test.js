@@ -83,4 +83,18 @@ describe('Content component', () => {
 			done();
 		});
 	});
+
+	it('should have a min and max number', (done) => {
+		contentComponent.setState({ quantity: QUANTITY });
+		button.simulate('click');
+
+		const maxNumber = contentComponent.state('maxNumber');
+		const minNumber = contentComponent.state('minNumber');
+
+		setImmediate(() => {
+			expect(minNumber).toBeLessThan(maxNumber);
+			done();
+		});
+	});
+
 });
