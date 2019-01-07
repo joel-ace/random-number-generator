@@ -6,7 +6,8 @@ import { generateNumbers } from '../../src/utils';
 const QUANTITY = 3;
 
 const props = {
-  phoneNumbers: generateNumbers(QUANTITY),
+	phoneNumbers: generateNumbers(QUANTITY),
+	page: 1,
 };
 
 describe('DisplayGeneratedNumbers component', () => {
