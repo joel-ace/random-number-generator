@@ -106,8 +106,6 @@ class Content extends Component {
 	};
 
 	saveNumbers = (numberArray) => {
-		// const numberString = numberArray.join(',');
-
 		saveAs(
 			new Blob([numberArray], {
 				type: 'text/csv;charset=utf-8'
@@ -169,13 +167,13 @@ class Content extends Component {
 									<div className="panel-body">
 										<div style={{ padding: 20, textAlign: 'center' }}>
 											<span style={metaDataSpan}>
-												Min: <span className="label label-md label-primary">{`0${minNumber}`}</span>
+												<span className="label label-md label-primary">Min:</span> {`0${minNumber}`}
 											</span>
 											<span style={metaDataSpan}>
-												Max: <span className="label label-primary">{`0${maxNumber}`}</span>
+												<span className="label label-primary">Max:</span> {`0${maxNumber}`}
 											</span>
 											<span style={metaDataSpan}>
-												Total <span className="label label-primary">{totalCount}</span>
+												<span className="label label-primary">Total:</span> {totalCount}
 											</span>
 										</div>
 										{ this.renderGeneratedNumbers(phoneNumbers) }
