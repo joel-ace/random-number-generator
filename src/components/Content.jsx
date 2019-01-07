@@ -78,7 +78,13 @@ class Content extends Component {
 	};
 
 	renderGeneratedNumbers = (phoneNumbers) => {
-		return (phoneNumbers.length > 0) && <DisplayGeneratedNumbers phoneNumbers={phoneNumbers} />
+		const { paginationData: { page } } = this.state;
+
+		return (phoneNumbers.length > 0) &&
+			<DisplayGeneratedNumbers
+				paginationLimit={PAGINATION_LIMIT}
+				page={parseInt(page, 10)}
+				phoneNumbers={phoneNumbers} />
 	};
 
 	sortNumbers = (numberArray, order) => {
