@@ -3,8 +3,12 @@ import { mount } from 'enzyme';
 import Content from '../../src/components/Content.jsx';
 
 const QUANTITY = 3;
+window.URL = {
+	createObjectURL: () => {}
+}
 
 describe('Content component', () => {
+	const saveAs = jest.fn();
 	const contentComponent = mount(<Content />);
 
 	const button = contentComponent.find('button.generate-number-button');
@@ -15,6 +19,7 @@ describe('Content component', () => {
 	const renderErrorMessageSpy = jest.spyOn(contentComponent.instance(), 'renderErrorMessage');
 	const handlePageClickSpy = jest.spyOn(contentComponent.instance(), 'handlePageClick');
 	const sortNumbersSpy = jest.spyOn(contentComponent.instance(), 'sortNumbers');
+	const saveNumbersSpy = jest.spyOn(contentComponent.instance(), 'saveNumbers');
 
 	contentComponent.update();
 	contentComponent.instance().forceUpdate();
@@ -93,6 +98,16 @@ describe('Content component', () => {
 
 		setImmediate(() => {
 			expect(minNumber).toBeLessThan(maxNumber);
+			done();
+		});
+	});
+
+	it('should call saveNumbers function when the save button is clicked', (done) => {
+		const saveButton = contentComponent.find('button.save-num');
+		saveButton.simulate('click');
+
+		setImmediate(() => {
+			expect(saveNumbersSpy).toHaveBeenCalled();
 			done();
 		});
 	});
