@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactPaginate from 'react-paginate';
+import saveAs from 'file-saver';
 
 import GenerateNumberForm from './GenerateNumberForm';
 import { generateNumbers, paginate } from '../utils';
@@ -96,7 +97,18 @@ class Content extends Component {
 			phoneNumbers,
 			paginationData,
 		});
-}
+	};
+
+	saveNumbers = (numberArray) => {
+		// const numberString = numberArray.join(',');
+
+		saveAs(
+			new Blob([numberArray], {
+				type: 'text/csv;charset=utf-8'
+			}),
+			'phoneNumbers.csv'
+		);
+	};
 
 	render () {
 		const {
@@ -127,7 +139,7 @@ class Content extends Component {
 								<div className="panel panel-default">
 									<div className="panel-heading">
 										<div className="controls">
-											<div className="pull-left">
+										<div className="pull-left">
 												<span>Sort Numbers: </span>
 												<button
 													className="btn btn-primary btn-sm sort-asc"
@@ -137,6 +149,12 @@ class Content extends Component {
 												<button
 													className="btn btn-primary btn-sm sort-desc"
 													onClick={() => this.sortNumbers(statePhoneNumbers, 'desc')}> desc
+												</button>
+											</div>
+											<div className="pull-right">
+												<button
+													className="btn btn-primary btn-sm save-num"
+													onClick={() => this.saveNumbers(statePhoneNumbers)} > Save as csv
 												</button>
 											</div>
 											<div className="clearfix" />
