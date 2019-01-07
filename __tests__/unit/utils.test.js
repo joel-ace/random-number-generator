@@ -10,6 +10,7 @@ const paginateFunctionOutput = {
   data: [4, 5],
   totalCount: 5,
   pageCount: 3,
+  page: 2,
 };
 
 

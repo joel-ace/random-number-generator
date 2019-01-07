@@ -19,6 +19,7 @@ const paginate = (limit, page, dataArray) => {
 
   return {
     data,
+    page,
     totalCount,
     pageCount,
   };
