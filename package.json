@@ -7,7 +7,9 @@
     "dev": "webpack-dev-server --progress --open --mode development --watch",
     "prod": "webpack --mode production",
     "start": "npm run prod && node index.js",
-    "test": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+		"test": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+		"heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
+		"heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/test-setup.js",
