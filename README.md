@@ -4,7 +4,7 @@
 
 Random Number Generator
 =======================
-Random Number Generator is a lite random phone number generator app built in JavaScript and the ReactJS library to generate up to 10,000 random phone numbers at once. [Click Here](http://#) to view the hosted app.
+Random Number Generator is a lite random phone number generator app built in JavaScript and the ReactJS library to generate up to 10,000 random phone numbers at once. [Click Here](https://joel-rng.herokuapp.com/) to view the hosted app.
 
 Features
 --------------
@@ -38,6 +38,7 @@ Tech Stack
 - **[Babel](https://babeljs.io/)** - Babel is a JavaScript compiler, it is used for transpiling ES6 down to ES5.
 - **[Express](https://expressjs.com/)** - Express is a minimal and flexible Node.js web application framework, It is used as the web server.
 - **[Jest](https://facebook.github.io/jest/)** - Complete and easy to set-up JavaScript testing solution.
+- **[File Saver](https://github.com/eligrey/FileSaver.js#readme/)** - File Saver is a library used for saving files on the client-side.
 
 Contributing to the project
 ---------------------------
